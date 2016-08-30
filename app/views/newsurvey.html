@@ -1,0 +1,183 @@
+<%- include('header.html') %>
+		<h1><%= title %></h1>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#"> 编辑问卷</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">保存</a></li>
+						<li><a href="#">预览</a></li>
+						<li><a href="#">发布</a></li>
+						<li><a href="#">统计分析</a></li>
+				    </ul>
+				</div>
+			</div>
+		</nav>
+		<div class="clearfix">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="list-group" id="controlBtn">
+							<span class="list-group-item active">题目控件</span>
+							<button type="button" class="list-group-item" data-type="radio">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>单选题
+							</button>
+							<button type="button" class="list-group-item" data-type="checkbox">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								多选题
+							</button>
+							<button type="button" class="list-group-item" data-type="sLine">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								单行文本题
+							</button>
+							<button type="button" class="list-group-item" data-type="mLine">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								问答题
+							</button>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<form action="/survey/save" class="form-horizontal" method="post" enctype='application/json'>
+							<div class="form-group">
+								<div class="col-sm-10">
+									<input type="text" class="form-control text-center" name="title" id="title" value="问卷标题">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10">
+									<textarea type="text" class="form-control" name="summary" id="summary">为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！</textarea>
+								</div>
+							</div>
+							<div class="quesList">
+								<!-- 编辑问题 -->
+								<div class="oneQues">
+									<div class="form-group">
+										<label for="questions[0][quetitle]" class="col-sm-2 control-label">题目</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name="questions[0][quetitle]" id="questions[0][quetitle]">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="questions[0][describe]" class="col-sm-2 control-label">题目描述</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name="questions[0][describe]" id="questions[0][describe]">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="questions[0][type]" class="col-sm-2 control-label">题型</label>
+										<div class="col-sm-10">
+											<p class="form-control-static text-primary">单选题</p>
+											<input type="hidden" class="form-control" name="questions[0][type]" id="questions[0][type]" value="radio">
+										</div>
+									</div>
+									<div class="options">
+										<div class="form-group">
+											<label for="questions[0][options]" class="col-sm-2 control-label">
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" name="questions[0][options]" id="questions[0][options]" value="选项">
+											</div>
+											<span class="col-sm-1 glyphicon glyphicon-search delOpt" aria-hidden="true"></span>
+										</div>
+										<div class="form-group">
+											<label for="questions[0][options]" class="col-sm-2 control-label">
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" name="questions[0][options]" id="questions[0][options]" value="选项">
+											</div>
+											<span class="col-sm-1 glyphicon glyphicon-search delOpt" aria-hidden="true"></span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile" class="col-sm-2 control-label">
+										</label>
+										<div class="col-sm-10">
+											<a href="#" class="form-control-static text-primary newOpt">新建选项</a>
+										</div>
+									</div>
+									<div class="form-group text-center">
+										<a href="#" class="btn btn-primary save">保存</a>
+										<a href="#" class="btn btn-default cancel">取消</a>
+									</div>
+								</div>
+
+
+								<div class="col-sm-10 oneQues">
+									<h3>1、哈哈 <i>*</i></h3>
+									<h4>dddd</h4>
+									<p>
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+										选项1
+										<input type="hidden" class="form-control" value="">
+									</p>
+									<p>
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+										选项1
+									</p>
+									<input type="text" class="form-control" readonly>
+									<textarea type="text" class="form-control" readonly></textarea>
+
+								</div>
+							</div>
+							
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/js/newsurvey.js"></script>
+
+<%- include('footer.html') %>
+<!-- 编辑问题 -->
+							<!-- <div class="form-group">
+								<label for="questions[0][quetitle]" class="col-sm-2 control-label">题目</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="questions[0][quetitle]" id="questions[0][quetitle]">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="questions[0][describe]" class="col-sm-2 control-label">题目描述</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="questions[0][describe]" id="questions[0][describe]">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="questions[0][type]" class="col-sm-2 control-label">题型</label>
+								<div class="col-sm-10">
+									<p class="form-control-static text-primary">单选题</p>
+									<input type="hidden" class="form-control" name="questions[0][type]" id="questions[0][type]" value="单选题">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="questions[0][options]" class="col-sm-2 control-label">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="questions[0][options]" id="questions[0][options]" value="选项">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="questions[0][options]" class="col-sm-2 control-label">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="questions[0][options]" id="questions[0][options]" value="选项">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputFile" class="col-sm-2 control-label">
+								</label>
+								<div class="col-sm-10">
+									<a href="#" class="form-control-static text-primary">新建选项</a>
+								</div>
+							</div>
+							<div class="form-group text-center">
+									<button type="submit" class="btn btn-primary">保存</button>
+									<a href="" class="btn btn-default">取消</a>
+							</div> -->

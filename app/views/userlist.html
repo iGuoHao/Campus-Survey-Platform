@@ -1,0 +1,45 @@
+<%- include('header.html') %>
+		<h1><%= title %></h1>
+		<div class="container">
+			<% if (userlist) { %>
+			<table class="table table-bordered table-hover">
+				<tr>
+					<th class="text-center">序号</th>
+					<th class="text-center">用户名</th>
+					<th class="text-center">邮箱</th>
+					<th class="text-center">联系电话</th>
+					<th class="text-center">角色</th>
+					<th class="text-center">状态</th>
+					<th class="text-center">操作</th>
+					<th class="text-center">删除</th>
+				</tr>
+				<% var index = 1 %>
+				<% userlist.forEach(function(user) { %>
+				<tr>
+					<td class="text-center"><%= index++%></td>
+					<td class="text-center"><%= user.username%></td>
+					<td class="text-center"><%= user.email%></td>
+					<td class="text-center"><%= user.tel%></td>
+					<% if (user.role>0) { %>
+						<td class="text-center">管理员</td>
+					<% } else {%>
+						<td class="text-center">普通用户</td>
+					<% } %>
+					<% if (user.state>0) { %>
+						<td class="text-center">已审核</td>
+						<td class="text-center">已操作</td>
+					<% } else {%>
+						<td class="text-center">未审核</td>
+						<td class="text-center">
+							<a href="/user/audit?id=<%= user.id %>" class="btn btn-success">通过</a>
+						</td>
+					<% } %>
+					<td class="text-center">
+						<a href="/user/del?id=<%= user.id %>" class="btn btn-danger">删除</a>
+					</td>
+				</tr>
+				<% }) %>
+			</table>
+			<% } %>
+		</div>
+<%- include('footer.html') %>
