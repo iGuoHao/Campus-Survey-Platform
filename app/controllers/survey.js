@@ -13,7 +13,26 @@ exports.new = function* (){
 
 	yield this.render('newsurvey',{title: "创建问卷"})
 }
+
 exports.save = function* (){
-	var survey = this.request.body
-	console.log(survey)
+	// var _survey = this.request.body
+	// var questions = _survey.questions
+	// _survey.user = this.session.user._id
+
+
+	// for (var i = 0, l = questions.length; i < l; i++) {
+	// 	if (questions[i].options) {
+	// 		_survey.questions[i].options = questions[i].options.split('-')
+	// 	} else {
+	// 		_survey.questions[i].options = []
+	// 	}
+	// }
+
+	// console.log(_survey)
+	// var survey = new Survey()
+
+	// yield survey.save()
+
+	// console.log(_survey)
+	this.redirect('/survey/list')
 }
