@@ -22,9 +22,9 @@ var SurveySchema = new Schema({
 	questions: [{
 		quetitle: String,
 		describe: String,	//问题描述
-		type: String,	//题型：单选、多选、问答、单行文本
-		optionArr: Array,	//选项
-		answers: Array		//回答
+		quetype: String,	//题型：单选、多选、问答、单行文本
+		options: [],	//选项
+		answers: []		//回答
 	}],
 	// false: 保存，未发布 || 发布后收回
 	// true: 已发布
@@ -32,8 +32,14 @@ var SurveySchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	browse:Number,	//浏览量
-	recovery: Number	//回收量
+	browse:{	//浏览量
+		type: Number,
+		default: 0
+	},
+	recovery: {		//回收量
+		type: Number,
+		default: 0
+	}
 })
 
 SurveySchema.pre('save', function(next){
@@ -44,6 +50,7 @@ SurveySchema.pre('save', function(next){
 		this.meta.updateAt = Date.now()		//不是新建时将updateAt更新为当前时间
 	}
 
+	next()
 })
 
 var Survey = mongoose.model('Survey', SurveySchema)

@@ -78,7 +78,7 @@ $(function(){
 		var type = $(input[2]).val()
 		var optionStr = ""
 		var inputLen = input.length
-		var result = '<h3>' + (number+1) + '、' + title + ' <i>*</i><input type="hidden" name="questions[' + number + '][quetitle]" data-id="' + number + '" value="' + title +'"></h3><h4>' + describe + '<input type="hidden" name="questions[' + number + '][describe]" value="' + describe +'"></h4><input type="hidden" name="questions[' + number + '][type]" value="'+ type + '">'
+		var result = '<h3>' + (number+1) + '、' + title + ' <i>*</i><input type="hidden" name="questions[' + number + '][quetitle]" data-id="' + number + '" value="' + title +'"></h3><h4>' + describe + '<input type="hidden" name="questions[' + number + '][describe]" value="' + describe +'"></h4><input type="hidden" name="questions[' + number + '][quetype]" value="'+ type + '">'
 		
 		switch(type){
 			case 'radio':
