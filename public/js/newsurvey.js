@@ -70,6 +70,7 @@ $(function(){
 	//保存题目
 	$('.quesList').on('click', '.save', function(event) {
 		var ques = $(this).parent().parent()
+		quesNum = quesList.children('.eidtQues').length
 		var input = ques.find('input')
 		var title = $(input[0]).val()
 		var num = $(input[0]).data('id')		//获取题号
@@ -109,7 +110,6 @@ $(function(){
 
 		result += '<input type="hidden" name="questions[' + number + '][options]" value="' + optionStr + '">'
 		
-		if (num<0) quesNum++
 		optionInitNum = 2
 
 		ques.addClass("eidtQues").empty().append(result)
@@ -179,7 +179,7 @@ $(function(){
 		} else {
 			//没有题目就删除
 			ques.remove()
-
+			quesNum--
 			optionInitNum = 2
 			flag = true
 		}

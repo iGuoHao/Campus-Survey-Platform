@@ -21,5 +21,6 @@ module.exports = function(router){
 	router.get("/survey/list", Survey.list)
 	router.get("/survey/new", Survey.new)
 	router.post("/survey/save", body, Survey.save)
+	router.get("/survey/modify", Survey.modify)
 
 }

@@ -1,0 +1,111 @@
+<%- include('header.html')%>
+		<h1><%= title %></h1>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#"> 编辑问卷</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">保存</a></li>
+						<li><a href="#">预览</a></li>
+						<li><a href="#">发布</a></li>
+						<li><a href="#">统计分析</a></li>
+				    </ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="clearfix">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="list-group" id="controlBtn">
+							<span class="list-group-item active">题目控件</span>
+							<button type="button" class="list-group-item" data-type="radio">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>单选题
+							</button>
+							<button type="button" class="list-group-item" data-type="checkbox">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								多选题
+							</button>
+							<button type="button" class="list-group-item" data-type="sLine">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								单行文本题
+							</button>
+							<button type="button" class="list-group-item" data-type="mLine">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								问答题
+							</button>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<form action="/survey/save" class="form-horizontal" method="post" enctype='application/json'>
+							<input type="hidden" name="id" id="id" value="<%= survey._id %>">
+							<div class="form-group">
+								<div class="col-sm-10">
+									<input type="text" class="form-control text-center" name="title" id="title" value="<%= survey.title %>">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10">
+									<textarea type="text" class="form-control" name="summary" id="summary"><%= survey.summary %></textarea>
+								</div>
+							</div>
+							<div class="quesList">
+								<!-- 问题列表 -->
+								<% var question = survey.questions, len = question.length;
+								if(len) { %>
+									<% for(var i=0; i<len; i++) { %>
+									<div class="oneQues eidtQues">
+									<h3><%= i+1 %>、<%= question[i].quetitle %><i>*</i>
+										<input type="hidden" name="questions[<%= i %>][quetitle]" data-id="<%= i %>" value="<%= question[i].quetitle %>">
+									</h3>
+									<h4><%= question[i].describe %>
+										<input type="hidden" name="questions[<%= i %>][describe]" value="<%= question[i].describe %>">
+									</h4>
+									<input type="hidden" name="questions[<%= i %>][quetype]" value="<%= question[i].quetype %>">
+									<% var opt = question[i].options, optLen = opt.length, optionStr = ""; %>
+									<% switch(question[i].quetype){ 
+										case 'radio':
+											for (var j = 0; j < optLen; j++) { 
+									%>
+											<p><span class="glyphicon glyphicon-search"aria-hidden="true"></span><%= opt[j] %></p>
+									<%		if (j < optLen - 1) optionStr += opt[j] + "-"
+												else optionStr += opt[j]
+											}
+											break;
+										case 'checkbox':
+											for (var j = 0; j < optLen; j++) {  
+									%>
+											<p><span class="glyphicon glyphicon-search"aria-hidden="true"></span><%= opt[j] %></p>
+									<%		if (j < optLen - 1) optionStr += opt[j] + "-"
+												else optionStr += opt[j]
+											}
+											break;
+										case 'sLine':
+									%>
+											<input type="text" class="form-control" readonly>
+									<%
+											break;
+										case 'mLine':
+									%>
+											<textarea type="text" class="form-control" readonly></textarea>
+									<%
+											break;
+										default:
+									} %>
+									<input type="hidden" name="questions[<%= i %>][options]" value="<%= optionStr %>">
+									</div>
+									<% } %>
+								<% } %>
+							</div>
+							<button type="submit" class="btn btn-primary">保存</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/js/newsurvey.js"></script>
+<%- include('footer.html')%>
