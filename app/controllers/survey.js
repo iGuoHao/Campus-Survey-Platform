@@ -53,3 +53,48 @@ exports.modify = function* (){
 	
 	yield this.render('modifysurvey',{title: "编辑问卷", survey: survey})
 }
+
+//预览问卷
+exports.view = function* (){
+	var id = this.query.id
+	var survey = yield Survey.findOne({_id: id})
+
+	if (!this.session.user) {
+		var browse = survey.browse + 1
+		yield Survey.update({_id: id}, {browse: browse})
+
+	}
+
+	yield this.render('viewsurvey',{title: "预览问卷", survey: survey})
+}
+//提交问卷
+exports.submit = function* (){
+	var _surveyAns = this.request.body
+	var id = _surveyAns.id
+	var questions = _surveyAns.questions
+	var survey = yield Survey.findOne({_id: id})
+
+	if (questions) {
+		var quesLen = questions.length
+
+		if (quesLen == survey.questions.length) {
+			for (var i = 0; i < quesLen; i++) {
+
+				survey.questions[i].answers.push(questions[i].answers)
+				// survey.questions[i].answers = []
+			}
+
+			survey.recovery++
+			survey.save()
+			this.redirect('/')	//返回首页
+
+		} else{
+			console.log("题目未做完")
+			this.redirect('/')	//返回首页
+		}
+
+	} else {
+		console.log("一题未做")
+		this.redirect('/')	//返回首页
+	}
+}
