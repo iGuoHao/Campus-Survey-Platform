@@ -1,0 +1,48 @@
+<%- include('header.html') %>
+		<h1><%= title %></h1>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#"> 编辑问卷</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">保存</a></li>
+						<li><a href="#">预览</a></li>
+						<li><a href="#">发布</a></li>
+						<li><a href="#">统计分析</a></li>
+				    </ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<h2 class="text-center">问卷题目：<%= survey.title %></h2>
+			<h3>问卷描述：<%= survey.summary %></h3>
+			<div class="row">
+				<div class="col-md-4">浏览数：<%= survey.browse %></div>
+				<div class="col-md-4">回收数：<%= survey.recovery %></div>
+				<div class="col-md-4">回收率：<%= (survey.recovery / survey.browse  * 100).toFixed(2) %>%</div>
+			</div>
+			<h3>收集答案</h3>
+			<div class="table-responsive">
+			<% var questions = survey.questions, quesNum = questions.length, ansNum = questions[0].answers.length;%>
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th class="text-center">序号</th>
+						<% for(var i=0; i<quesNum; i++) { %>
+							<th class="text-center"><%= (i+1) +"、"+questions[i].quetitle %></th>
+						<% } %>
+					</tr>
+					<% for(var i=0; i<ansNum; i++) { %>
+					<tr>
+						<th class="text-center"><%= i+1 %></th>
+						<% for(var j=0; j<quesNum; j++) { %>
+							<th class="text-center"><%= questions[j].answers[i] %></th>
+						<% } %>
+					</tr>
+					<% } %>
+				</table>
+			</div>
+
+		</div>
+<%- include('footer.html') %>

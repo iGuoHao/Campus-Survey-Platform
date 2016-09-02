@@ -98,3 +98,32 @@ exports.submit = function* (){
 		this.redirect('/')	//返回首页
 	}
 }
+
+//发布/回收问卷
+exports.operate = function* (){
+	var id = this.query.id
+	var survey = yield Survey.findOne({_id: id})
+	var state = !survey.state
+
+	yield Survey.update({_id: id}, {state: state})
+	this.redirect('/survey/list')
+}
+
+//统计分析
+exports.analyse = function* (){
+	var id = this.query.id
+	var survey = yield Survey.findOne({_id: id})
+
+	yield this.render('analysesurvey',{title: "统计分析", survey: survey})
+
+}
+
+//删除问卷
+exports.del = function* (){
+	var id = this.query.id
+
+	if (id) {
+		yield Survey.remove({_id: id})
+		this.redirect('/survey/list')
+	}
+}

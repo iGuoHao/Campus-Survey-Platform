@@ -22,8 +22,8 @@
 					<th class="text-center">创建时间</th>
 					<th class="text-center">状态</th>
 					<th class="text-center">编辑</th>
+					<th class="text-center">发布/回收</th>
 					<th class="text-center">预览</th>
-					<th class="text-center">发布回收</th>
 					<th class="text-center">统计分析</th>
 					<th class="text-center">删除</th>
 				</tr>
@@ -35,14 +35,16 @@
 					<td class="text-center"><%= survey.meta.updateAt.getFullYear() %></td>
 					<% if(survey.state) { %>
 						<td class="text-center">已发布</td>
+						<td class="text-center"><button class="btn btn-success" disabled="disabled">编辑</button></td>
+						<td class="text-center"><a href="/survey/operate?id=<%= survey._id %>" class="btn btn-success">回收</a></td>
 					<% } else { %>
 						<td class="text-center">未发布</td>
+						<td class="text-center"><a href="/survey/modify?id=<%= survey._id %>" class="btn btn-success">编辑</a></td>
+						<td class="text-center"><a href="/survey/operate?id=<%= survey._id %>" class="btn btn-success">发布</a></td>
 					<% } %>
-					<td class="text-center"><a href="/survey/modify?id=<%= survey._id %>" class="btn btn-success">编辑</a></td>
 					<td class="text-center"><a href="/survey/view?id=<%= survey._id %>" class="btn btn-success">预览</a></td>
-					<td class="text-center"><a href="#" class="btn btn-success">发布回收</a></td>
-					<td class="text-center"><a href="#" class="btn btn-success">统计分析</a></td>
-					<td class="text-center"><a href="#" class="btn btn-success">删除</a></td>
+					<td class="text-center"><a href="/survey/analyse?id=<%= survey._id %>" class="btn btn-success">统计分析</a></td>
+					<td class="text-center"><a href="/survey/del?id=<%= survey._id %>" class="btn btn-success">删除</a></td>
 				</tr>
 				<% }) %>
 			</table>
