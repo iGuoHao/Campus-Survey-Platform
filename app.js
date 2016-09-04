@@ -3,11 +3,11 @@ var mongoose = require('mongoose')
 var routes = require('koa-router')()
 var route = require('./route/route.js')
 var render = require('koa-ejs')
-// var bodyParser = require('koa-bodyparser')
 var staticServer = require('koa-static');
 var path = require('path');
 var session = require('koa-session')
 
+//数据库连接
 var dbUrl = 'mongodb://localhost/campusSurvey'
 mongoose.connect(dbUrl)
 
@@ -25,7 +25,7 @@ render(app, {
 	debug: true
 })
 
-// app.use(bodyParser())
+//session
 app.keys = ['some secret hurr']
 app.use(session(app))
 app.use(function* (next) {
@@ -36,10 +36,6 @@ app.use(function* (next) {
 
 app.use(routes.routes())
 app.use(staticServer(path.join(__dirname,'public')))
-
-// app.use(function *(){
-// 	this.body = "hello world"
-// })
 
 app.listen(port)
 console.log('started on port ' + port)

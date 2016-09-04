@@ -44,6 +44,7 @@ UserSchema.pre('save', function(next){
 		this.meta.updateAt = Date.now()		//不是新建时将updateAt更新为当前时间
 	}
 
+	//加密密码
 	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
 		if (err) return next(err);
 
@@ -58,6 +59,7 @@ UserSchema.pre('save', function(next){
 })
 
 UserSchema.methods = {
+	//比较密码
 	comparePassword: function(_password){
 		return bcrypt.compareSync(_password, this.password)
 	}

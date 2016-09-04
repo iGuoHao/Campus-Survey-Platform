@@ -34,6 +34,8 @@ exports.save = function* (){
 		survey.title = _survey.title
 		survey.summary = _survey.summary
 		survey.questions = _survey.questions
+		survey.browse = 0
+		survey.recovery = 0
 
 	} else{			//新增问卷
 
@@ -59,7 +61,7 @@ exports.view = function* (){
 	var id = this.query.id
 	var survey = yield Survey.findOne({_id: id})
 
-	if (!this.session.user) {
+	if (!this.session.user && survey.state) {
 		var browse = survey.browse + 1
 		yield Survey.update({_id: id}, {browse: browse})
 

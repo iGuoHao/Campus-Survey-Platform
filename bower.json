@@ -1,0 +1,27 @@
+{
+  "name": "Campus-Survey-Platform",
+  "homepage": "https://github.com/iGuoHao/Campus-Survey-Platform",
+  "authors": [
+    "GuoHao"
+  ],
+  "description": "Campus Survey Platform is a node app for the Association and Function Departments to collection of information",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "Campus",
+    "Survey",
+    "Platform"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

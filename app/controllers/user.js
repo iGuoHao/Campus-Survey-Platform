@@ -41,18 +41,25 @@ exports.signin = function* (){
 		//对比密码
 		var isMatch = result.comparePassword(password)
 		if (isMatch) {
-			//登陆成功
-			this.session.user = result
-			if (result.role > 0) {	//管理员
-				this.redirect('/user/list')
+			//登录成功
+			if (result.state > 0) {
+				//已审核
+				this.session.user = result
+				if (result.role > 0) {	//管理员
+					this.redirect('/user/list')
 
-			} else {	//普通用户
-				this.redirect('/survey/list')
+				} else {	//普通用户
+					this.redirect('/survey/list')
 
+				}
+			}else{
+				//未审核
+				yield this.render('message',{title: "您的账户还未通过审核~"})
 			}
+			
 		}
 		else {
-			//登陆失败
+			//登录失败
 			this.redirect('/')
 		}
 	}
@@ -114,4 +121,26 @@ exports.del = function* (){
 		this.redirect('/user/list')
 	}
 
+}
+
+//要求用户已登录
+exports.signinRequired = function* (next){
+	var user = this.session.user
+
+	if(!user){
+		this.redirect('/')
+	} else {
+		yield next
+	}
+}
+
+//要求管理员身份
+exports.adminRequired = function* (next){
+	var user = this.session.user
+
+	if (user.role < 1) {
+		this.redirect('/')
+	}else{
+		yield next
+	}
 }
