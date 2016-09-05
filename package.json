@@ -1,0 +1,36 @@
+{
+  "name": "campus-survey-platform",
+  "version": "1.0.0",
+  "description": "Campus Survey PlatForm is a node app for the Association and Function Departments to collection of information",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "koa": "^1.2.1",
+    "koa-bodyparser": "^2.2.0",
+    "koa-ejs": "^3.0.0",
+    "koa-router": "^5.4.0",
+    "koa-session": "^3.3.1",
+    "koa-static": "^2.0.0",
+    "mongoose": "^4.5.10",
+    "koa-generic-session-mongo": "^0.2.5",
+    "koa-generic-session": "^1.11.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iGuoHao/Campus-Survey-Platform.git"
+  },
+  "keywords": [
+    "Campus-Survey-Platform"
+  ],
+  "author": "GuoHao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iGuoHao/Campus-Survey-Platform/issues"
+  },
+  "homepage": "https://github.com/iGuoHao/Campus-Survey-Platform#readme"
+}
