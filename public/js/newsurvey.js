@@ -22,14 +22,14 @@ $(function(){
 				case 'radio':
 					result += "单选题"
 					for (var i = 0; i < optionInitNum; i++) {
-						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-search"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="选项"></div><span class="col-sm-1 glyphicon glyphicon-search delOpt"aria-hidden="true"></span></div>'
+						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="选项"></div><span class="col-sm-1 form-control-static glyphicon glyphicon-remove-circle delOpt"aria-hidden="true"></span></div>'
 					}
 					optionStr = '<div class="options">' + optionStr + '</div><div class="form-group"><label for="exampleInputFile"class="col-sm-2 control-label"></label><div class="col-sm-10"><a href="#"class="form-control-static text-primary newOpt">新建选项</a></div></div>'
 					break;
 				case 'checkbox':
 					result += "多选题"
 					for (var i = 0; i < optionInitNum; i++) {
-						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-search"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="选项"></div><span class="col-sm-1 glyphicon glyphicon-search delOpt"aria-hidden="true"></span></div>'
+						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="选项"></div><span class="col-sm-1 form-control-static glyphicon glyphicon-remove-circle delOpt"aria-hidden="true"></span></div>'
 					}
 					optionStr = '<div class="options">' + optionStr + '</div><div class="form-group"><label for="exampleInputFile"class="col-sm-2 control-label"></label><div class="col-sm-10"><a href="#"class="form-control-static text-primary newOpt">新建选项</a></div></div>'
 					break;
@@ -54,7 +54,7 @@ $(function(){
 		var newOptQues = $(this).parent().parent().parent()
 		var options = newOptQues.find('.options')
 
-		var result = '<div class="form-group"><label for="options' + optionInitNum + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-search"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + optionInitNum + '"id="options' + optionInitNum + '"value="选项"></div><span class="col-sm-1 glyphicon glyphicon-search delOpt"aria-hidden="true"></span></div>'
+		var result = '<div class="form-group"><label for="options' + optionInitNum + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + optionInitNum + '"id="options' + optionInitNum + '"value="选项"></div><span class="col-sm-1 form-control-static glyphicon glyphicon-remove-circle delOpt"aria-hidden="true"></span></div>'
 		optionInitNum++
 		options.append(result)
 		event.preventDefault();
@@ -85,7 +85,7 @@ $(function(){
 			case 'radio':
 				for (var i = 3; i < inputLen; i++) {
 					var option = $(input[i]).val()
-					result += '<p><span class="glyphicon glyphicon-search"aria-hidden="true"></span>' + option + '</p>'
+					result += '<p><span class="glyphicon glyphicon-record"aria-hidden="true"></span>' + option + '</p>'
 					if (i < inputLen - 1) optionStr += option + "-"
 						else optionStr += option
 				}
@@ -93,7 +93,7 @@ $(function(){
 			case 'checkbox':
 				for (var i = 3; i < inputLen; i++) {
 					var option = $(input[i]).val()
-					result += '<p><span class="glyphicon glyphicon-search"aria-hidden="true"></span>' + option + '</p>'
+					result += '<p><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span>' + option + '</p>'
 					if (i < inputLen - 1) optionStr += option + "-"
 						else optionStr += option
 				}
@@ -139,14 +139,14 @@ $(function(){
 				case 'radio':
 					result += "单选题"
 					for (var i = 0; i < optionNum; i++) {
-						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-search"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="' + options[i] + '"></div><span class="col-sm-1 glyphicon glyphicon-search delOpt"aria-hidden="true"></span></div>'
+						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="' + options[i] + '"></div><span class="col-sm-1 form-control-static glyphicon glyphicon-remove-circle delOpt"aria-hidden="true"></span></div>'
 					}
 					optionStr = '<div class="options">' + optionStr + '</div><div class="form-group"><label for="exampleInputFile"class="col-sm-2 control-label"></label><div class="col-sm-10"><a href="#"class="form-control-static text-primary newOpt">新建选项</a></div></div>'
 					break;
 				case 'checkbox':
 					result += "多选题"
 					for (var i = 0; i < optionNum; i++) {
-						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-search"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="' + options[i] + '"></div><span class="col-sm-1 glyphicon glyphicon-search delOpt"aria-hidden="true"></span></div>'
+						optionStr += '<div class="form-group"><label for="options' + i + '"class="col-sm-2 control-label"><span class="glyphicon glyphicon-unchecked"aria-hidden="true"></span></label><div class="col-sm-9"><input type="text"class="form-control"name="options' + i + '"id="options' + i + '"value="' + options[i] + '"></div><span class="col-sm-1 form-control-static glyphicon glyphicon-remove-circle delOpt"aria-hidden="true"></span></div>'
 					}
 					optionStr = '<div class="options">' + optionStr + '</div><div class="form-group"><label for="exampleInputFile"class="col-sm-2 control-label"></label><div class="col-sm-10"><a href="#"class="form-control-static text-primary newOpt">新建选项</a></div></div>'
 					break;
