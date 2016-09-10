@@ -106,7 +106,7 @@
 								<span class="input-group-addon" id="sizing-addon1">
 									<span class="glyphicon glyphicon-user"></span>
 								</span>
-								<input type="text" name="username"class="form-control"	placeholder="username">
+								<input type="text" name="username" id="username" class="form-control"	placeholder="username">
 							</div>
 						</div>
 						<div class="form-group">
@@ -114,13 +114,14 @@
 								<span class="input-group-addon" id="sizing-addon1">
 									<span class="glyphicon glyphicon-lock"></span>
 								</span>
-								<input type="password" name="password"class="form-control"	placeholder="password">
+								<input type="password" name="password" id="password" class="form-control"	placeholder="password">
 							</div>
 						</div>
+						<p class="alert alert-danger signinPrompt" role="alert"></p>
 					</div>
 					<div class="modal-footer">
 					    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					    <button type="submit" class="btn btn-primary">登录</button>
+					    <button type="submit" class="btn btn-primary submit">登录</button>
 					</div>
 				</form>
 		    </div>

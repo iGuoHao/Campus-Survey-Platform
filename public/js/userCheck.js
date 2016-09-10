@@ -1,28 +1,44 @@
 // $(function(){
-// 	//通过审核
-// 	$("#signupModal input").blur(function(e) {
-// 		var that = $(this)
-// 		var input = that.attr("name")
-// 		var inputVal = that.val()
-// 		if (input == "username") {
-// 			if (inputVal) {
-// 				$.ajax({
-// 					url: '/user/audit?id=' + id,
-// 					type: 'GET'
-// 				})
-// 				.done(function() {
-// 					console.log("success");
-// 				})
-// 				console.log("has")
-// 			} else {
-// 				console.log("用户名不能为空")
-// 			}
-// 		} else if(input == "password") {
+// 	var hasPassword = false
+// 	var correctUsername = false
 
-// 			if (!inputVal) {
-// 				console.log("密码不能为空")
-// 			}
-// 		}
+// 	$('#username').blur(function(event) {
+// 		var username = $(this).val()
+// 		var signinPrompt = $('.signinPrompt')
 		
+// 		if (username) {
+// 			$.ajax({
+// 				url: '/user/signin',
+// 				type: 'POST',
+// 				dataType: 'json',
+// 				data: {username: username},
+// 			})
+// 			.done(function(data) {
+
+// 				if (data.message == 'nouser') {
+// 					correctUsername = false
+// 					signinPrompt.show().html(username + " 用户不存在,请输入正确的用户名！")
+// 				} else {
+// 					correctUsername = true
+// 					signinPrompt.hide()
+// 				}
+// 			})
+// 		} else {
+// 			correctUsername = false
+// 			signinPrompt.show().html("用户名不能为空！")
+// 		}
 // 	})
+
+// 	$('#password').blur(function(event) {
+// 		var password = $(this).val()
+// 		var signinPrompt = $('.signinPrompt')
+
+// 		if (password) {
+// 			hasPassword = true
+// 			signinPrompt.hide()
+// 		} else {
+// 			hasPassword = false
+// 			signinPrompt.show().html("密码不能为空！")
+// 		}
+// 	});
 // })

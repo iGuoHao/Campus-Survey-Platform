@@ -1,43 +1,5 @@
 <%- include('header.html') %>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="/survey/new"> 编辑问卷</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">保存</a></li>
-						<li><a href="#">预览</a></li>
-						<li><a href="#">发布</a></li>
-						<li><a href="#">统计分析</a></li>
-				    </ul>
-				</div>
-			</div>
-		</nav>
-		<div class="clearfix">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-2">
-						<div class="list-group" id="controlBtn">
-							<span class="list-group-item active">题目控件</span>
-							<button type="button" class="list-group-item" data-type="radio">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>单选题
-							</button>
-							<button type="button" class="list-group-item" data-type="checkbox">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								多选题
-							</button>
-							<button type="button" class="list-group-item" data-type="sLine">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								单行文本题
-							</button>
-							<button type="button" class="list-group-item" data-type="mLine">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								问答题
-							</button>
-						</div>
-					</div>
-					<div class="col-md-8 col-md-offset-1">
+		<%- include('aside.html') %>
 						<form action="/survey/save" class="form-horizontal surveyForm" method="post" enctype='application/json'>
 							<div class="form-group">
 								<input type="text" class="form-control text-center" name="title" id="title" value="问卷标题">
