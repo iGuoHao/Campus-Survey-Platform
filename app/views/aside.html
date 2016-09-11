@@ -1,15 +1,27 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-collapse collapse">
+				<% if(survey) { %>
+					<ul class="nav navbar-nav">
+						<li><a href="/survey/modify?id=<%= survey._id %>"> 编辑问卷</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li><a href="#">保存</a></li> -->
+						<li><a href="/survey/view?id=<%= survey._id %>">预览</a></li>
+						<li><a href="/survey/operate?id=<%= survey._id %>">发布</a></li>
+						<li><a href="/survey/analyse?id=<%= survey._id %>">统计分析</a></li>
+				    </ul>
+				<% } else { %>
 					<ul class="nav navbar-nav">
 						<li><a href="/survey/new"> 编辑问卷</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">保存</a></li>
-						<li><a href="#">预览</a></li>
+					<!-- <ul class="nav navbar-nav navbar-right">
+						
+						<li><a href="#">预览</a></li><li><a href="#">保存</a></li>
 						<li><a href="#">发布</a></li>
 						<li><a href="#">统计分析</a></li>
-				    </ul>
+				    </ul> -->
+				<% } %>
 				</div>
 			</div>
 		</nav>

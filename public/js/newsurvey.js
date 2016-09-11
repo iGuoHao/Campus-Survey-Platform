@@ -116,6 +116,11 @@ $(function(){
 		event.preventDefault()
 
 		flag = true 	//保存当前题目后允许插入下一个题
+
+		//有题目时允许保存问卷
+		if (quesNum>=0) {
+			$('.quesList + button').removeAttr('disabled')
+		}
 		
 	})
 
@@ -182,6 +187,11 @@ $(function(){
 			quesNum--
 			optionInitNum = 2
 			flag = true
+
+			//没有题目时禁止保存问卷
+			if (quesNum<0) {
+				$('.quesList + button').attr('disabled', 'disabled')
+			}
 		}
 		
 		event.preventDefault()

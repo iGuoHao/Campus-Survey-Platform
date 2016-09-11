@@ -9,7 +9,7 @@ exports.list = function* (){
 
 //新建问卷
 exports.new = function* (){
-	yield this.render('newsurvey',{title: "创建问卷"})
+	yield this.render('newsurvey',{title: "创建问卷", survey: ""})
 
 }
 
